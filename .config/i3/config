@@ -1,120 +1,265 @@
-set $mod Mod4
+# ----------
+# Royal Sky
+# ----------
+# Diki Andriansyah
+# e: diki1aap@gmail.com
+# dikiaap @ freenode & github
+
 font pango:monospace 8, FontAwesome 8
+
+# use win key
+set $mod Mod4
+
+# use these keys for focus, movement, and resize directions
+set $left   j
+set $down   k
+set $up     l
+set $right  semicolon
+
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-new_window 1pixel
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# control focused window when follows the mouse movements
+focus_follows_mouse no
 
+# start a terminal
+bindsym $mod+Return workspace $WS1; exec i3-sensible-terminal
 
-mode "resize" 
-{
-	bindsym Left resize shrink width 5 px or 5 ppt
-	bindsym Down resize grow height 5 px or 5 ppt
-	bindsym Up resize shrink height 5 px or 5 ppt
-	bindsym Right resize grow width 5 px or 5 ppt
+# kill focused window
+bindsym $mod+Shift+q kill
 
-	bindsym Escape mode "default"
-}
+# start dmenu (a program launcher)
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -nb '#212121' -sb '#2B83A6' -sf '#FFFFFF' -fn 'Source Sans Pro-10'"
+bindsym $mod+d exec --no-startup-id rofi -show run -config ~/.config/rofi/royal-sky.theme -font "Source Sans Pro 12" -lines 11
 
-set $w1 "1:  "
-set $w2 "2:  "
-set $w3 "3:  "
-set $w4 "4:  "
+# change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
 
-set $w0 "10:  Music"
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left   focus left
+bindsym $mod+Down   focus down
+bindsym $mod+Up     focus up
+bindsym $mod+Right  focus right
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# move focused window
+bindsym $mod+Shift+$left    move left
+bindsym $mod+Shift+$down    move down
+bindsym $mod+Shift+$up      move up
+bindsym $mod+Shift+$right   move right
 
-bindsym $mod+space focus mode_toggle
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
 
-bindsym $mod+KP_Enter exec gnome-calculator
-
-bindsym $mod+1 workspace $w1
-bindsym $mod+2 workspace $w2
-bindsym $mod+3 workspace $w3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace $w0
-
-bindsym $mod+F1 exec lxappearance
-bindsym $mod+F5 exec --no-startup-id xbacklight -dec 10
-bindsym $mod+F6 exec --no-startup-id xbacklight -inc 10
-
-bindsym $mod+a focus parent
-bindsym $mod+e layout toggle split
+# split in horizontal orientation
 bindsym $mod+h split h
-bindsym $mod+q kill
-bindsym $mod+r mode "resize"
+
+# split in vertical orientation
 bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
+# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-bindsym $mod+Shift+1 move container to workspace $w1
-bindsym $mod+Shift+2 move container to workspace $w2
-bindsym $mod+Shift+3 move container to workspace $w3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace $w0
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 
-bindsym $mod+Shift+e exec i3-msg exit
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+x exec i3lock
+# focus the parent container
+bindsym $mod+a focus parent
 
-# bindings for apps
-bindsym $mod+t exec subl3
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+d exec dmenu_run
-bindsym $mod+c exec chromium
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
 
-# Shutdown, Reboot, Lock Screen, and Logout 
-set $power_mode "power"
-bindsym $mod+Shift+q      mode $power_mode
-mode $power_mode {
-    bindsym p         exec systemctl poweroff
-    bindsym r         exec systemctl reboot 
-    bindsym l         exec i3lock -i ~/Pictures/cube.png , mode "default"
-    bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-    bindsym h         exec systemctl hibernate 
-    bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
+# show the next scratchpad window or hide the focused scratchpad window
+bindsym $mod+minus scratchpad show
 
+# set popups during fullscreen mode
+popup_during_fullscreen smart
 
-    bindsym Return    mode "default"
-    bindsym Escape    mode "default"
-}
+# window border settings
+new_window pixel    0
+new_float normal    0
+hide_edge_borders   none
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+# shortcut to change window border
+bindsym Mod4+t border normal    0
+bindsym Mod4+y border pixel     1
+bindsym Mod4+u border none
 
-client.background #3f4551
-client.focused #333333 #222222 #ffffff
+# customize workspace name
+set $WS1   "1:   ZSH "
+set $WS2   "2:   Code "
+set $WS3   "3:   Chromium "
+set $WS4   "4:   Files "
+set $WS5   "5:   Documents "
+set $WS6   "6:   Media "
+set $WS7   "7:   Design "
+set $WS8   "8:   Chat "
+set $WS9   "9:   General "
+set $WS0   "10:   Settings "
 
-# exec_always --no-startup-id compton --config ~/.config/compton/compton.conf -b
+# switch to workspace
+bindsym $mod+1 workspace $WS1
+bindsym $mod+2 workspace $WS2
+bindsym $mod+3 workspace $WS3
+bindsym $mod+4 workspace $WS4
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS0
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $WS1
+bindsym $mod+Shift+2 move container to workspace $WS2
+bindsym $mod+Shift+3 move container to workspace $WS3
+bindsym $mod+Shift+4 move container to workspace $WS4
+bindsym $mod+Shift+5 move container to workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS0
+
+# startup applications
+exec --no-startup-id xautolock -time 10 -locker i3lock-fancy
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --bg-fill ~/.themes/Arc-Dark/arcbg.png
-exec --no-startup-id i3-msg 'workspace $w1; exec chromium'
+exec --no-startup-id feh --bg-fill ~/Public/desktop/wp-i3.png
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec --no-startup-id $HOME/.config/polybar/launch.sh
 
-assign [class="Rhythmbox"] $w0
-assign [class="Chromium"] $w1
-assign [class="Sublime Text"] $w2
+# set border when applications started
+for_window [class="GParted"]                        floating enable border normal 0
+for_window [class="Lightdm-gtk-greeter-settings"]   floating enable border normal 0
+for_window [class="Lxappearance"]                   floating enable border normal 0
+for_window [class="Software-properties-gtk"]        floating enable border normal 0
+for_window [class="Galculator"]                     floating enable
+for_window [class="Gcolor2"]                        floating enable
+for_window [class="Gkamus"]                         floating enable
+for_window [class="Go-for-it"]                      floating enable
+for_window [class="Menu"]                           floating enable
+for_window [class="Gimp"]                           border normal 0
 
-for_window [class="Eog"] floating enable
-for_window [class="Lxappearance"] floating enable
+# shortcut applications
+bindsym $mod+F1                 exec gkamus
+bindsym $mod+F2 workspace $WS2; exec subl
+bindsym $mod+F3 workspace $WS3; exec chromium
+bindsym $mod+F4 workspace $WS4; exec nautilus
+bindsym $mod+F5 workspace $WS5; exec evince
+bindsym $mod+F6 workspace $WS6; exec audacious
+bindsym $mod+F7 workspace $WS7; exec gcolor2
+bindsym $mod+F8 workspace $WS8; exec telegram-desktop
+bindsym Print                   exec gnome-screenshot
+bindsym $mod+Shift+x            exec i3lock-fancy
+
+# volume
+bindsym XF86AudioLowerVolume    exec amixer -q set Master 3%- unmute
+bindsym XF86AudioRaiseVolume    exec amixer -q set Master 3%+ unmute
+bindsym XF86AudioMute           exec amixer -q set Master toggle
+
+# switching window with tab
+bindsym $mod+Tab exec --no-startup-id rofi -show window -config ~/.config/rofi/royal-sky.theme -font "Source Sans Pro 12" -lines 11
+
+# assign program to workspace
+assign [class="URxvt"]              → $WS1
+assign [class="terminal"]           → $WS1
+assign [class="(?i)sublime"]        → $WS2
+assign [class="Chromium"]           → $WS3
+assign [class="firefox"]            → $WS3
+assign [class="Nautilus"]           → $WS4
+assign [class="Pcmanfm"]            → $WS4
+assign [class="Evince"]             → $WS5
+assign [class="ghostwriter"]        → $WS5
+assign [class="(?i)libreoffice"]    → $WS5
+assign [class="Audacious"]          → $WS6
+assign [class="vlc"]                → $WS6
+assign [class="Gimp"]               → $WS7
+assign [class="Inkscape"]           → $WS7
+assign [class="Hexchat"]            → $WS8
+assign [class="(?i)riot"]           → $WS8
+assign [class="Skype"]              → $WS8
+assign [class="Telegram"]           → $WS8
+assign [class="Upwork"]             → $WS8
+assign [class="Galculator"]         → $WS9
+assign [class="Gnome-font-viewer"]  → $WS9
+assign [class="Go-for-it"]          → $WS9
+assign [class="Keepassx"]           → $WS9
+assign [class="Transmission-gtk"]   → $WS9
+assign [class="Bum"]                → $WS0
+assign [class="Bleachbit"]          → $WS0
+assign [class="Dconf-editor"]       → $WS0
+assign [class="Gnome-disks"]        → $WS0
+assign [class="GParted"]            → $WS0
+assign [class="Grub-customizer"]    → $WS0
+assign [class="Hardinfo"]           → $WS0
+assign [class="Lxappearance"]       → $WS0
+assign [class="Lxinput"]            → $WS0
+assign [class="Lxrandr"]            → $WS0
+assign [class="Lxtask"]             → $WS0
+assign [class="Menu"]               → $WS0
+assign [class="Obconf"]             → $WS0
+assign [class="Lightdm-gtk-greeter-settings"]   → $WS0
+assign [class="Software-properties-gtk"]        → $WS0
+
+# resize window: 1/4
+bindsym $mod+Shift+u floating enable; resize set 660 px 350 px; sticky enable; move window to position 15 px 15 px
+bindsym $mod+Shift+i floating enable; resize set 660 px 350 px; sticky enable; move window to position 15 px 380 px
+bindsym $mod+Shift+o floating enable; resize set 660 px 350 px; sticky enable; move window to position 690 px 15 px
+bindsym $mod+Shift+p floating enable; resize set 660 px 350 px; sticky enable; move window to position 690 px 380 px
+
+# resize window: 1/2
+bindsym $mod+Shift+v floating enable; resize set 660 px 715 px; sticky enable; move window to position 15 px 15 px
+bindsym $mod+Shift+b floating enable; resize set 1335 px 350 px; sticky enable; move window to position 15 px 380 px
+bindsym $mod+Shift+n floating enable; resize set 1335 px 350 px; sticky enable; move window to position 15 px 15 px
+bindsym $mod+Shift+m floating enable; resize set 660 px 715 px; sticky enable; move window to position 690 px 15 px
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Exit i3 ' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "  " {
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "  "
+
+# class                 border  backgr. text    indicator
+client.focused          #2B83A6 #2B83A6 #FFFFFF #DDDDDD
+client.focused_inactive #212121 #212121 #86888C #292D2E
+client.unfocused        #212121 #212121 #86888C #292D2E
+client.urgent           #2F343A #D64E4E #FFFFFF #D64E4E
+client.placeholder      #212121 #0C0C0C #FFFFFF #212121
+client.background       #212121
