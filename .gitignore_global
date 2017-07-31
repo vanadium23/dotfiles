@@ -1,0 +1,8 @@
+# Python virtualenvs
+.venv/
+
+# Editors' files
+*sublime-*
+.vscode/
+.idea/
+
