@@ -1,0 +1,84 @@
+rules:
+  # move pictures to subfolder
+  - folders:
+      - ~/Downloads
+    filters:
+      - Extension:
+          - png
+          - jpg
+          - jpeg
+          - gif
+    actions:
+      - Move: ~/Pictures/
+  # move incomplete downloads older > 30 days into the trash
+  - folders:
+      - ~/Downloads
+    filters:
+      - Extension:
+          - download
+          - crdownload
+          - part
+      - LastModified:
+          days: 30
+          mode: older
+    actions:
+      - Trash
+  # remove torrent files
+  - folders:
+      - ~/Downloads
+    filters:
+      - Extension:
+          - torrent
+    actions:
+      - Trash
+  # move screenshots into "Screenshots" folder
+  - folders:
+      - ~/Pictures
+    filters:
+      - Filename:
+          startswith: 'IMG_'
+          startswith: 'PANO_'
+          startswith: 'photo'
+    actions:
+      - Move: ~/Pictures/Photos/
+  # move screenshots into "Screenshots" folder
+  - folders:
+      - ~/Pictures
+    filters:
+      - Extension:
+          - png
+    actions:
+      - Move: ~/Pictures/Screenshots/
+  - folders:
+      - ~/Pictures
+    filters:
+      - Filename:
+          startswith: 'Screenshot'
+    actions:
+      - Move: ~/Pictures/Screenshots/
+  # move installers to subfolder
+  - folders:
+      - ~/Downloads
+    filters:
+      - Extension:
+          - exe
+          - msi
+    actions:
+      - Move: ~/Downloads/Installers/
+  # move installers older > 30 days into the trash
+  - folders:
+      - ~/Downloads/Installers/
+    filters:
+      - LastModified:
+          days: 30
+          mode: older
+    actions:
+      - Trash
+  # move books to subfolder
+  - folders:
+      - ~/Downloads
+    filters:
+      - Extension:
+          - epub
+    actions:
+      - Move: ~/Downloads/Books/
