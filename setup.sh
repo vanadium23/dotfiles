@@ -15,15 +15,36 @@ ask_for_confirmation() {
 }
 
 function main() {
-    for dotfile in $(dotfiles) ; do
-        create_symlink $dotfile $HOME
-    done
-
     for configdir in $(configdirs) ; do
-        if [[ "$configdir" == ".config/" ]]; then
-            continue
-        fi 
-        create_symlink $configdir $HOME
+        symlink_dir_recursive $configdir $HOME
+    done
+}
+
+function symlink_dir_recursive() {
+    local dotdir=${1#./}
+    local dstdir=$2
+
+    local line=$(echo $dotdir | tr "/" "\n")
+    local arr=($line)
+    local dotfile=""
+
+    for x in ${arr[@]}
+    do
+        if [[ "$dotfile" == "" ]]; then
+            dotfile="$x"
+        else
+            dotfile="$dotfile/$x"
+        fi
+
+        if [[ "$dotdir" == "$dotfile" ]]; then
+            create_symlink $dotfile $HOME
+            break
+        fi
+
+        if [[ ! -d "$HOME/$dotfile" ]]; then
+            warn "dir: $HOME/$dotfile don't exist"
+            mkdir $HOME/$dotfile
+        fi
     done
 }
 
@@ -48,7 +69,7 @@ function create_symlink() {
         fi
     fi
 
-    ln -s "`dotdir $dotfile`" "$dstdir"
+    ln -s "`dotdir`/$dotfile" "$dstdir/$dotfile"
     ok "$dotfile \t creating link"
 }
 
@@ -56,12 +77,8 @@ function dotdir() {
     cd `dirname "${BASH_SOURCE[0]}"` && echo "`pwd`/$1"
 }
 
-function dotfiles() {
-    find `dotdir` -maxdepth 1 -type f -name '.*' -not -name '.git' -printf '%f\n'
-}
-
 function configdirs() {
-    find `dotdir`/.config/ -maxdepth 1 -printf '%f\n'
+    find . -type f -not -path "./.git/*" -a -not -name 'README.md' -a -not -name 'setup.sh'
 }
 
 function warn() {
