@@ -183,3 +183,14 @@ setopt promptsubst
 
 # PROMPT='%B%F{blue}%n@%m%k %(?..%F{blue}[%F{253}%?%F{blue}] )%B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
 PROMPT='%B%F{blue}%n@%m%k %B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
+
+eval $(dircolors ~/.dir_colors)
+export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
+
+alias ls='ls --color'
+# Ask before over-writting a file
+alias mv='mv -i'
+# Ask before deleting a file, and automatically make it recursive
+alias rm='rm -Ri'
+# Ask before over-writting a file and recursively copy by default
+alias cp='cp -iR'
