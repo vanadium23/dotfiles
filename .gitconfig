@@ -29,5 +29,5 @@
     name = vanadium23
     email = chernoffivan@gmail.com
 
-[includeIf "gitdir:~/Work/"]
-    path = ~/.gitconfig-work
+[include]
+    path = ~/.gitconfig_local
