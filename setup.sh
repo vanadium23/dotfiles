@@ -15,36 +15,12 @@ ask_for_confirmation() {
 }
 
 function main() {
-    for configdir in $(configdirs) ; do
-        symlink_dir_recursive $configdir $HOME
+    for configdir in $(listdirs) ; do
+        mkdir -p $HOME/${configdir#./}
     done
-}
 
-function symlink_dir_recursive() {
-    local dotdir=${1#./}
-    local dstdir=$2
-
-    local line=$(echo $dotdir | tr "/" "\n")
-    local arr=($line)
-    local dotfile=""
-
-    for x in ${arr[@]}
-    do
-        if [[ "$dotfile" == "" ]]; then
-            dotfile="$x"
-        else
-            dotfile="$dotfile/$x"
-        fi
-
-        if [[ "$dotdir" == "$dotfile" ]]; then
-            create_symlink $dotfile $HOME
-            break
-        fi
-
-        if [[ ! -d "$HOME/$dotfile" ]]; then
-            warn "dir: $HOME/$dotfile don't exist"
-            mkdir $HOME/$dotfile
-        fi
+    for dotfile in $(dotfiles) ; do
+        create_symlink ${dotfile#./} $HOME
     done
 }
 
@@ -77,7 +53,11 @@ function dotdir() {
     cd `dirname "${BASH_SOURCE[0]}"` && echo "`pwd`/$1"
 }
 
-function configdirs() {
+function listdirs() {
+    find . -type d -not -path "./.git/*" -a -not -path "." -a -not -path "./.git"
+}
+
+function dotfiles() {
     find . -type f -not -path "./.git/*" -a -not -name 'README.md' -a -not -name 'setup.sh'
 }
 
