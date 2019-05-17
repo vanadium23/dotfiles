@@ -19,9 +19,12 @@ function main() {
         create_symlink $dotfile $HOME
     done
 
-    # for configdir in $(configdirs) ; do
-    #     create_symlink $configdir $HOME
-    # done
+    for configdir in $(configdirs) ; do
+        if [[ "$configdir" == ".config/" ]]; then
+            continue
+        fi 
+        create_symlink $configdir $HOME
+    done
 }
 
 function create_symlink() {
