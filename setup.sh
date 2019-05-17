@@ -2,46 +2,51 @@
 
 # Copied from https://github.com/plexus/dotfiles/blob/master/connect-the-dots
 
+answer_is_yes() {
+    [[ "$REPLY" =~ ^[Yy]$ ]] \
+        && return 0 \
+        || return 1
+}
+
+ask_for_confirmation() {
+    echo "$1 (y/n) "
+    read -r -n 1
+    printf "\n"
+}
+
 function main() {
     for dotfile in $(dotfiles) ; do
-        if [[ -L "$HOME/$dotfile" ]]; then
-            check_existing_symlink $dotfile $HOME
-        else
-            create_symlink_if_possible $dotfile $HOME
-        fi
+        create_symlink $dotfile $HOME
     done
 
     # for configdir in $(configdirs) ; do
-    #     if [[ -L "$HOME/.config/$configdir" ]]; then
-    #         check_existing_symlink $configdir $HOME/.config/
-    #     else
-    #         create_symlink_if_possible $configdir $HOME/.config/
-    #     fi
+    #     create_symlink $configdir $HOME
     # done
 }
 
-function check_existing_symlink() {
+function create_symlink() {
     local dotfile=$1
     local dstdir=$2
     local target=$(readlink -f $dstdir/$dotfile)
 
-    if [[ "$target" != "`dotdir $dotfile`" ]]; then
-        warn "$dotfile \t symlink points elsewhere -> $target"
-    else
+    if [[ "$target" == "`dotdir $dotfile`" ]]; then
         ok "$dotfile \t already linked"
+        return
     fi
-}
-
-function create_symlink_if_possible() {
-    local dotfile=$1
-    local dstdir=$2
 
     if [[ -e "$dstdir/$dotfile" ]]; then
         warn "$dotfile \t can't create symlink, regular file is in the way."
-    else
-        ok "$dotfile \t creating link"
-        ln -s "`dotdir $dotfile`" "$dstdir"
+        ask_for_confirmation "Do you want to overwrite $dstdir/$dotfile?"
+        if answer_is_yes; then
+            cp -iv $dstdir/$dotfile "$dstdir/$dotfile.bak"
+            rm -i $dstdir/$dotfile
+        else
+            return
+        fi
     fi
+
+    ln -s "`dotdir $dotfile`" "$dstdir"
+    ok "$dotfile \t creating link"
 }
 
 function dotdir() {
