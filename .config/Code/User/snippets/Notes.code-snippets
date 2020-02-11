@@ -28,7 +28,8 @@
 			"Action items:",
 			"* $4"
 		],
-		"description": "Add meeting notes from 1-1"
+		"description": "Add meeting notes from 1-1",
+		"scope": "markdown"
 	},
 	"meeting": {
 		"prefix": "meeting",
@@ -44,7 +45,8 @@
 			"Result:",
 			"* $3"
 		],
-		"description": "Add meeting notes"
+		"description": "Add meeting notes",
+		"scope": "markdown"
 	},
 	"mooc": {
 		"prefix": "mooc",
@@ -59,7 +61,8 @@
 			"",
 			"* $6"
 		],
-		"description": "quickly add new week in MOOC"
+		"description": "quickly add new week in MOOC",
+		"scope": "markdown"
 	},
 	"agenda": {
 		"prefix": "agenda",
@@ -75,7 +78,8 @@
 		"body": [
 			"Date: $CURRENT_YEAR.$CURRENT_MONTH.$CURRENT_DATE"
 		],
-		"description": "quickly add date anywhere"
+		"description": "quickly add date anywhere",
+		"scope": "markdown"
 	},
 	"project": {
 		"prefix": "project",
@@ -87,5 +91,6 @@
 			"Due date: $3",
 		],
 		"description": "quickly add project",
+		"scope": "markdown"
 	}
 }
