@@ -194,3 +194,7 @@ alias mv='mv -i'
 alias rm='rm -Ri'
 # Ask before over-writting a file and recursively copy by default
 alias cp='cp -iR'
+
+if [ -f ~/.zshrc_local ]; then
+  source ~/.zshrc_local
+fi
