@@ -1,5 +1,6 @@
 # Python virtualenvs
 .venv/
+.python-version
 
 # Editors' files
 *sublime-*
