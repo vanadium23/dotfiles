@@ -21,12 +21,12 @@
 			"## 1-1 $CURRENT_YEAR.$CURRENT_MONTH.$CURRENT_DATE",
 			"",
 			"Results:",
-			"* $1",
-			"* $2",
-			"* $3",
+			"- $1",
+			"- $2",
+			"- $3",
 			"",
 			"Action items:",
-			"* $4"
+			"* [ ] $4"
 		],
 		"description": "Add meeting notes from 1-1",
 		"scope": "markdown"
@@ -39,10 +39,10 @@
 			"Date: $CURRENT_YEAR.$CURRENT_MONTH.$CURRENT_DATE",
 			"",
 			"Agenda:",
-			"* $2",
+			"- $2",
 			"",
 			"Result:",
-			"* $3"
+			"- $3"
 		],
 		"description": "Add meeting notes",
 		"scope": "markdown"
@@ -53,12 +53,12 @@
 			"## Week ${1:number}: ${2:theme}",
 			"Date: $CURRENT_YEAR.$CURRENT_MONTH.$CURRENT_DATE",
 			"",
-			"* ${3:agenda}",
-			"* ${4:agenda}",
+			"- ${3:agenda}",
+			"- ${4:agenda}",
 			"",
 			"### ${5:submodule}",
 			"",
-			"* $6"
+			"- $6"
 		],
 		"description": "quickly add new week in MOOC",
 		"scope": "markdown"
@@ -67,8 +67,8 @@
 		"prefix": "agenda",
 		"body": [
 			"Agenda:",
-			"* $1",
-			"* $2"
+			"- $1",
+			"- $2"
 		],
 		"description": "quickly add agenda anywhere"
 	},
