@@ -5,6 +5,7 @@
     f = fetch -p
     c = commit
     p = push
+    pp = push -u origin HEAD
     ba = branch -a
     bd = branch -d
     bD = branch -D
@@ -20,8 +21,11 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     rank = shortlog -sn --no-merges
     bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
+    bdg = "!git branch -v | grep '\[gone\]' | xargs -n 1 git branch -d"
+    cch = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
 [core]
+    attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore_global
 	editor = vim
 
