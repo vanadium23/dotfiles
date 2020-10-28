@@ -104,6 +104,6 @@
     },
     "markdown.extension.italic.indicator": "_",
     "markdown.todo.symbols.bullet": "*",
-    "pasteImage.path": "${projectRoot}/images/",
+    "pasteImage.path": "${projectRoot}/_media/",
     "pasteImage.defaultName": "YMMDDHHmmss"
 }

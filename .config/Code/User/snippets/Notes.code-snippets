@@ -90,5 +90,11 @@
 		],
 		"description": "quickly add project",
 		"scope": "markdown"
+	},
+	"task": {
+		"prefix": "task",
+		"body": "* [ ] $1",
+		"description": "quickly add task",
+		"scope": "markdown"
 	}
 }
