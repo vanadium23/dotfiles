@@ -1,0 +1,72 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+global_vars:
+  - name: "today"
+    type: "date"
+    params:
+      format: "%Y.%m.%d"
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # Dates
+  - trigger: ":td"
+    replace: "{{today}}"
+
+  # Shell commands
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"
+
+  # markdown expand
+  - trigger: ":task"
+    replace: "* [ ] "
+  
+
+  # my notes
+  - trigger: ":ono"
+    replace: |
+      # 1-1 {{today}}
+
+      Results:
+      - $|$
+      
+      Action items:
+      * [ ] 
+  - trigger: ":meet"
+    replace: |
+      # {{today}} $|$
+
+      Attendees: 
+
+      Agenda:
+      - 
+
+      Results:
+      - 
+      
+      Action items:
+      * [ ] 
+  - trigger: ":ag"
+    replace: |
+      Agenda:
+      - 
+      - 
+  - trigger: ":prj"
+    replace: |
+      # $|$
+      
+      Date: {{today}}
+      Due: 
+      Goal: 
