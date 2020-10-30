@@ -30,7 +30,7 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "highlight.regexes": {
-        // tags
+        // persons
         "(@\\w+)": [
             {
                 "color": "yellow",
@@ -95,9 +95,15 @@
                 "filterLanguageRegex": "markdown",
             },
         ],
-        "(#Creativity)": [
+        "(#Public)": [
             {
                 "color": "cyan",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
+        "(#\\w+)": [
+            {
+                "color": "#0EB6D8",
                 "filterLanguageRegex": "markdown",
             },
         ]
