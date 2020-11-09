@@ -22,6 +22,30 @@ function main() {
     for dotfile in $(dotfiles) ; do
         create_symlink ${dotfile#./} $HOME
     done
+
+    install_vscode_extenstions
+}
+
+function install_vscode_extenstions() {
+    extenstions=(
+        "patbenatar.advanced-new-file"
+        "editorconfig.editorconfig"
+        "fabiospampinato.vscode-highlight"
+        "kisstkondoros.vscode-gutter-preview"
+        "yzhang.markdown-all-in-one"
+        "tchayen.markdown-links"
+        "svsool.markdown-memo"
+        "mushan.vscode-paste-image"
+        "alefragnani.project-manager"
+        "ms-vscode.sublime-keybindings"
+        "ms-vscode.wordcount"
+    )
+    ask_for_confirmation "Do you want to install VsCode extenstions?"
+    if answer_is_yes; then
+        for ext in ${extenstions[@]}; do
+            code --install-extension $ext
+        done
+    fi
 }
 
 function create_symlink() {
