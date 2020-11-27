@@ -26,8 +26,9 @@
 
 [core]
     attributesfile = ~/.gitattributes
-	excludesfile = ~/.gitignore_global
-	editor = vim
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    autocrlf = input
 
 [user]
     name = vanadium23
@@ -35,5 +36,6 @@
 
 [include]
     path = ~/.gitconfig_local
+
 [pull]
-	ff = only
+    ff = only
