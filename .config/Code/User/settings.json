@@ -100,12 +100,6 @@
                 "color": "cyan",
                 "filterLanguageRegex": "markdown",
             },
-        ],
-        "(#\\w+)": [
-            {
-                "color": "#0EB6D8",
-                "filterLanguageRegex": "markdown",
-            },
         ]
     },
     "markdown.extension.italic.indicator": "_",
