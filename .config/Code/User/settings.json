@@ -30,36 +30,8 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "highlight.regexes": {
-        // persons
-        "(@\\w+)": [
-            {
-                "color": "yellow",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // estimation
-        "(~\\d+\\w)": [
-            {
-                "color": "cyan",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // completed task
-        "(\\[x\\] .+)[;\\s]": [
-            {
-                "color": "limegreen",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // cancelled task
-        "(\\[c\\] .+)[;\\s]": [
-            {
-                "color": "red",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
         // my projects
-        "(#ETG)": [
+        "(#ETG|#Career)": [
             {
                 "color": "#1867e0",
                 "filterLanguageRegex": "markdown",
@@ -83,6 +55,18 @@
                 "filterLanguageRegex": "markdown",
             },
         ],
+        "(#Mead)": [
+            {
+                "color": "yellow",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
+        "(#Social)": [
+            {
+                "color": "MediumSlateBlue",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
         "(#Education)": [
             {
                 "color": "orange",
@@ -95,9 +79,37 @@
                 "filterLanguageRegex": "markdown",
             },
         ],
-        "(#Public)": [
+        "(#Public|#Creativity)": [
             {
                 "color": "cyan",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
+        // persons
+        "(@\\w+)": [
+            {
+                "color": "yellow",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
+        // estimation
+        "(~\\d+\\w)": [
+            {
+                "color": "cyan",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
+        // completed task
+        "(\\[x\\] .*)[;\\s]": [
+            {
+                "color": "limegreen",
+                "filterLanguageRegex": "markdown",
+            },
+        ],
+        // cancelled task
+        "(\\[c\\] .*)[;\\s]": [
+            {
+                "color": "red",
                 "filterLanguageRegex": "markdown",
             },
         ]
