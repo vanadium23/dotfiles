@@ -9,79 +9,32 @@ global_vars:
     params:
       format: "%Y.%m.%d"
 
+  - name: "zkid"
+    type: "date"
+    params:
+      format: "%Y%m%d%H%M"
+
 # Matches are the substitution rules, when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
-
   # Dates
   - trigger: ":td"
     replace: "{{today}}"
 
-  # Shell commands
-  - trigger: ":shell"
-    replace: "{{output}}"
+  - trigger: ":ytd"
+    replace: "{{yesterday}}"
     vars:
-      - name: output
+      - name: yesterday
         type: shell
         params:
-          cmd: "echo Hello from your shell"
+          cmd: "bash -c 'date +%Y.%m.%d -d -1day'"
 
-  # markdown expand
-  - trigger: ":task"
-    replace: "* [ ] "
-  
+  - trigger: ":zk"
+    replace: "{{zkid}}"
 
-  # my notes
-  - trigger: ":ono"
-    replace: |
-      # 1-1 {{today}}
+  # Why not?
+  - trigger: ":flip"
+    replace: "`(╯°□°）╯︵ ┻━┻`"
 
-      Results:
-      - $|$
-      
-      Action items:
-      * [ ] 
-  - trigger: ":meet"
-    replace: |
-      # {{today}} $|$
-
-      Attendees: 
-
-      Agenda:
-      - 
-
-      Results:
-      - 
-      
-      Action items:
-      * [ ] 
-  - trigger: ":ag"
-    replace: |
-      Agenda:
-      - 
-      - 
-  - trigger: ":prj"
-    replace: |
-      # $|$
-      
-      Date: {{today}}
-      Due: 
-      Goal: 
-  - trigger: ":rsc"
-    replace: |
-      # $|$
-
-      tags: #tag
-
-      Краткое описание того, зачем нужен этот ресурс.
-
-      ## Глава
-
-      Логическая часть, которая больше раскрывает указанную тему.
-
-      ## Источники
-
-      - [Source](example.org)
+  - trigger: ":sh"
+    replace: "`¯\\_(ツ)_/¯`"
