@@ -21,7 +21,6 @@
     "python.linting.flake8Args": [
         "--max-line-length=120"
     ],
-    "go.inferGopath": true,
     "workbench.colorTheme": "Monokai",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
