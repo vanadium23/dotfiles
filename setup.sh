@@ -38,7 +38,7 @@ function install_vscode_extenstions() {
         "mushan.vscode-paste-image"
         "alefragnani.project-manager"
         "ms-vscode.sublime-keybindings"
-        "ms-vscode.wordcount"
+        "vanadium23.markdown-hashtags"
     )
     ask_for_confirmation "Do you want to install VsCode extenstions?"
     if answer_is_yes; then

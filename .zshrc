@@ -187,6 +187,10 @@ PROMPT='%B%F{blue}%n@%m%k %B%F{cyan}%1~${git_prompt}%F{cyan} %# %b%f%k'
 eval $(dircolors ~/.dir_colors)
 export TERM=xterm-256color        # for common 256 color terminals (e.g. gnome-terminal)
 
+export GOPATH=$HOME
+export GIT_CU_DIR=$HOME/src
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
 alias ls='ls --color'
 # Ask before over-writting a file
 alias mv='mv -i'
