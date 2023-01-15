@@ -21,98 +21,13 @@
     "python.linting.flake8Args": [
         "--max-line-length=120"
     ],
-    "workbench.colorTheme": "Monokai",
+    "workbench.colorTheme": "GitHub Dark",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
     "workbench.editor.enablePreview": false,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
-    "highlight.regexes": {
-        // my projects
-        "(#ETG|#Career)": [
-            {
-                "color": "#1867e0",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Personal)": [
-            {
-                "color": "red",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Health)": [
-            {
-                "color": "lime",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#SS)": [
-            {
-                "color": "violet",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Mead)": [
-            {
-                "color": "yellow",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Social)": [
-            {
-                "color": "MediumSlateBlue",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Education)": [
-            {
-                "color": "orange",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Finance)": [
-            {
-                "color": "gold",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        "(#Public|#Creativity)": [
-            {
-                "color": "cyan",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // persons
-        "(@\\w+)": [
-            {
-                "color": "yellow",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // estimation
-        "(~\\d+\\w)": [
-            {
-                "color": "cyan",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // completed task
-        "(\\[x\\] .*)[;\\s]": [
-            {
-                "color": "limegreen",
-                "filterLanguageRegex": "markdown",
-            },
-        ],
-        // cancelled task
-        "(\\[c\\] .*)[;\\s]": [
-            {
-                "color": "red",
-                "filterLanguageRegex": "markdown",
-            },
-        ]
-    },
     "markdown.extension.italic.indicator": "_",
     "markdown.todo.symbols.bullet": "*",
     "pasteImage.path": "${projectRoot}/_media/",
