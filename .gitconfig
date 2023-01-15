@@ -24,6 +24,16 @@
     bdg = "!git branch -v | grep '\\[gone\\]' | xargs -n 1 git branch -d"
     cch = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
+    # src: https://softwaredoug.com/blog/2022/11/09/idiot-proof-git-aliases.html
+    # *********************
+    # Rebase workflow
+    mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+    synced = "!git pull origin $(git mainbranch) --rebase"
+    update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
+    squash = "!git rebase -v -i $(git mainbranch)"
+    publish = push origin HEAD --force-with-lease
+    pub = publish
+
 [core]
     attributesfile = ~/.gitattributes
     excludesfile = ~/.gitignore_global
