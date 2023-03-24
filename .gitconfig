@@ -21,7 +21,7 @@
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     rank = shortlog -sn --no-merges
     bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d"
-    bdg = "!git branch -v | grep '\\[gone\\]' | xargs -n 1 git branch -d"
+    bdg = "!git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
     cch = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg | head -10"
 
     # src: https://softwaredoug.com/blog/2022/11/09/idiot-proof-git-aliases.html
