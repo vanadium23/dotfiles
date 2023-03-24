@@ -1,5 +1,6 @@
 # Python virtualenvs
 .venv/
+venv/
 .python-version
 
 # Editors' files
