@@ -199,6 +199,13 @@ alias rm='rm -Ri'
 # Ask before over-writting a file and recursively copy by default
 alias cp='cp -iR'
 
+# activate python virtualenv if exists
+_python_venv_activate(){
+  [[ -d .venv ]] || return
+  source .venv/bin/activate
+}
+chpwd_functions+=( _python_venv_activate )
+
 if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
