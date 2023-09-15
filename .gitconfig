@@ -31,7 +31,7 @@
     synced = "!git pull origin $(git mainbranch) --rebase"
     update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
     squash = "!git rebase -v -i $(git mainbranch)"
-    publish = push origin HEAD --force-with-lease
+    publish = push -u origin HEAD --force-with-lease
     pub = publish
 
 [core]
