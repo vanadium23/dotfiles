@@ -3,6 +3,7 @@
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Overview
 
+// spawn-at-startup "awatcher"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "301" "niri msg action power-off-monitors" "timeout" "300" "swaylock -f" "before-sleep" "swaylock -f"
@@ -39,7 +40,7 @@ input {
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
-        // disabled-on-external-mouse
+        disabled-on-external-mouse
     }
 
     mouse {
@@ -309,6 +310,11 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match title="Zoom"
+    open-floating true
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
@@ -347,6 +353,7 @@ binds {
     Mod+T { spawn "alacritty"; }
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
+    Super+Escape { spawn "makoctl" "dismiss" "-a"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -365,9 +372,9 @@ binds {
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+J     { focus-column-left; }
-    Mod+K     { focus-workspace-down; }
-    Mod+I     { focus-workspace-up; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
     Mod+L     { focus-column-right; }
 
     Mod+Ctrl+Left  { move-column-left; }

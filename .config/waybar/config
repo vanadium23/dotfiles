@@ -2,8 +2,8 @@
 	"layer": "top",
   "position": "top",
 	"modules-left": ["custom/launcher","cpu","memory","temperature","battery", "backlight", "pulseaudio"],
-	"modules-center": ["river/window"],
-	"modules-right": ["river/tags", "clock", "tray", "bluetooth", "custom/power"],
+	"modules-center": ["niri/window"],
+	"modules-right": ["niri/language", "river/tags", "clock", "tray", "bluetooth", "custom/power"],
 
  "custom/launcher":{
         "format": "",
@@ -59,7 +59,7 @@
 		}
 	},
 
-  "river/window": {
+  "niri/window": {
     "max-length": 40,
   },
 
@@ -117,6 +117,9 @@
         "tooltip": false,
         "on-click": "bash ~/.config/river/scripts/power_menu",
     },
+    "niri/language": {
+      "format": "{}"
+    }
 }
 
 # vim: set filetype=cfg :
