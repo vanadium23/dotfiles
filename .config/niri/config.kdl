@@ -7,6 +7,8 @@
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swayidle" "-w" "timeout" "301" "niri msg action power-off-monitors" "timeout" "300" "swaylock -f" "before-sleep" "swaylock -f"
+// spawn-at-startup "/home/vanadium23/src/gitea.chrnv.ru/vanadium23/overseer/overseer.db"
+spawn-at-startup "/home/vanadium23/.local/bin/overseer" ">>" "/tmp/overseer.log"
 
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
@@ -311,7 +313,8 @@ window-rule {
 }
 
 window-rule {
-    match title="Zoom"
+    // it is a floating tab from zoom screen share
+    match title="as_toolbar"
     open-floating true
 }
 

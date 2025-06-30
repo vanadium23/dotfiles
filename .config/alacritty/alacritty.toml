@@ -37,8 +37,8 @@ bright_foreground = "0xe6efff"
 size = 13
 
 [font.normal]
-family = "Ubuntu Mono"
-style = "Regular"
+family = "JetBrainsMono Nerd Font"
+style = "Monospace"
 
 [window]
 opacity = 0.85
