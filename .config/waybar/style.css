@@ -1,5 +1,5 @@
 * {
-	font-size: 12px;
+	font-size: 14px;
 	font-family: JetBrainsMono Nerd Font;
 	font-weight: bold;
 }
@@ -13,6 +13,7 @@ window#waybar {
 #custom-left-arrow-dark {
 	color: #24283B;
 }
+
 #custom-right-arrow-light,
 #custom-left-arrow-light {
 	color: #1A1B26;
@@ -28,7 +29,9 @@ window#waybar {
 #cpu,
 #disk,
 #network,
-#window {
+#window,
+#language,
+#battery {
 	background: #24283B;
 }
 
@@ -36,13 +39,16 @@ window#waybar {
 	padding: 0 2px;
 	color: #fdf6e3;
 }
+
 #workspaces button.focused {
 	color: #7aa2f7;
 }
+
 #workspaces button:hover {
 	box-shadow: inherit;
 	text-shadow: inherit;
 }
+
 #workspaces button:hover {
 	background: #24283B;
 	border: #24283B;
@@ -52,21 +58,25 @@ window#waybar {
 #pulseaudio {
 	color: #7aa2f7;
 }
+
 #memory {
 	color: #9ece6a;
 }
+
 #cpu {
 	color: #bb9af7;
 }
+
 #battery {
 	color: #859900;
 }
+
 #disk {
 	color: #e0af68;
 }
 
 #network {
-        color: #f7768e;
+	color: #f7768e;
 }
 
 
@@ -76,6 +86,8 @@ window#waybar {
 #cpu,
 #network,
 #disk,
-#window {
+#window,
+#language,
+#battery {
 	padding: 0 10px;
 }

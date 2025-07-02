@@ -1,25 +1,18 @@
 {
   "layer": "top",
-  "position": "bottom",
+  "position": "top",
   "modules-left": [
-    "niri/workspaces",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "niri/window",
     "custom/left-arrow-light"
   ],
   "modules-center": [
-    "custom/left-arrow-dark",
-    "clock#1",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
-    "clock#2",
-    "custom/right-arrow-dark",
-    "custom/right-arrow-light",
-    "clock#3",
-    "custom/right-arrow-dark"
+    "custom/weather",
+    "clock",
   ],
   "modules-right": [
+    "custom/right-arrow-light",
+    "niri/language",
+    "custom/right-arrow-dark",
     "custom/right-arrow-light",
     "network",
     "custom/right-arrow-dark",
@@ -37,9 +30,7 @@
     "custom/right-arrow-dark",
     "custom/right-arrow-light",
     "battery",
-    "custom/right-arrow-light"
   ],
-
   "custom/left-arrow-dark": {
     "format": "",
     "tooltip": false
@@ -56,32 +47,47 @@
     "format": "",
     "tooltip": false
   },
-
   "sway/workspaces": {
     "disable-scroll": true,
     "format": "{name}"
   },
-
+  "clock": {
+    "interval": 60,
+    "format": " {:%a %b %d %H:%M}",
+    "tooltip-format": "<big>{calendar}</big>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<span color='#ffead3'>{}</span>",
+        "days": "<span color='#eeeeee'>{}</span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
   "clock#1": {
     "format": "{:%a}",
     "tooltip": false
   },
   "clock#2": {
-    "format": "{:%I:%M %p}",
+    "format": "{:%H:%M}",
     "tooltip": false
   },
   "clock#3": {
     "format": "{:%m-%d}",
     "tooltip": false
   },
-
   "pulseaudio": {
     "format": "{icon} {volume:2}%",
     "format-bluetooth": "{icon}  {volume}%",
     "format-muted": "MUTED",
     "format-icons": {
       "headphones": "",
-      "default": [" ", " "]
+      "default": [
+        " ",
+        " "
+      ]
     },
     "scroll-step": 5,
     "on-click": "pamixer -t",
@@ -102,7 +108,13 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
+    ]
   },
   "disk": {
     "interval": 5,
@@ -111,5 +123,22 @@
   },
   "tray": {
     "icon-size": 20
+  },
+  "niri/language": {
+    "format": " {short}",
+  },
+  "network": {
+    "interface": "wl*",
+    "format-wifi": "\uf1eb  {essid}",
+    "format-disconnected": "-no-network-",
+    "tooltip-format-wifi": "{ifname} - ({signalStrength}%)\nIP - {ipaddr}",
+    "on-click-right": "$TERM -e impala"
+  },
+  "custom/weather": {
+    "exec": "curl -s 'wttr.in/?format=%c%t'",
+    "interval": 3600,
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "xdg-open 'https://wttr.in/'"
   }
 }
