@@ -1,156 +1,81 @@
 * {
-  border: none;
-  font-family: "Fira Code";
-  font-size: 16px;
+	font-size: 12px;
+	font-family: JetBrainsMono Nerd Font;
+	font-weight: bold;
 }
 
 window#waybar {
-  background: black;
+	background: #1A1B26;
+	color: #fdf6e3;
 }
 
-#custom-launcher {
-  font-size: 26px;
-  color: #59acff;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 4px;
-  background: #372736;
-  border-bottom: 2px solid black;
+#custom-right-arrow-dark,
+#custom-left-arrow-dark {
+	color: #24283B;
+}
+#custom-right-arrow-light,
+#custom-left-arrow-light {
+	color: #1A1B26;
+	background: #24283B;
 }
 
-#cpu {
-  margin-left: 8px;
-  margin-right: 8px;
-  color: white;
-}
-
+#workspaces,
+#clock.1,
+#clock.2,
+#clock.3,
+#pulseaudio,
 #memory,
-#battery,
-#backlight,
-#temperature {
-  margin-left: 8px;
-  margin-right: 8px;
-  color: white;
+#cpu,
+#disk,
+#network,
+#window {
+	background: #24283B;
+}
+
+#workspaces button {
+	padding: 0 2px;
+	color: #fdf6e3;
+}
+#workspaces button.focused {
+	color: #7aa2f7;
+}
+#workspaces button:hover {
+	box-shadow: inherit;
+	text-shadow: inherit;
+}
+#workspaces button:hover {
+	background: #24283B;
+	border: #24283B;
+	padding: 0 3px;
 }
 
 #pulseaudio {
-  color: #b0fc38;
-  margin-left: 8px;
+	color: #7aa2f7;
 }
-
-#temperature.critical {
-  color: red;
+#memory {
+	color: #9ece6a;
 }
-
+#cpu {
+	color: #bb9af7;
+}
 #battery {
-  color: #3ded97;
+	color: #859900;
+}
+#disk {
+	color: #e0af68;
 }
 
-#battery.low {
-  color: red;
+#network {
+        color: #f7768e;
 }
 
-#battery.charging,
-#battery.plugged {
-  color: #59acff;
-}
 
-#battery.low:not(.charging) {
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#backlight {
-  color: yellow;
-}
-
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#network,
+#disk,
 #window {
-  font-weight: bold;
-}
-
-#tags {
-  background: #372736;
-  border-radius: 4px;
-}
-
-#tags button {
-  color: gold;
-}
-
-#tags button.occupied {
-  color: #59acff;
-}
-
-#tags button.focused {
-  color: #59acff;
-  border: 1px solid #59acff;
-}
-
-#tags button.focused:hover {
-  color: #59acff;
-}
-
-#tags button:hover {
-  color: #b0fc38;
-}
-
-#clock {
-  margin-left: 16px;
-  margin-right: 16px;
-  color: #abe9b3;
-}
-
-#tray {
-  margin-left: 8px;
-  margin-right: 8px;
-  padding: 10px;
-  border-radius: 50%;
-  background: #372736;
-}
-
-#bluetooth {
-  margin-left: 8px;
-  margin-right: 8px;
-  padding-left: 14px;
-  padding-right: 14px;
-  background: #372736;
-  border-radius: 8px;
-  color: white;
-}
-
-#bluetooth.on {
-  color: blue;
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  border-radius: 50%;
-}
-
-#bluetooth.off {
-  border-radius: 50%;
-}
-
-#bluetooth.connected {
-  color: #59acff;
-}
-
-#custom-power {
-  font-size: 18px;
-  margin-left: 8px;
-  padding-left: 10px;
-  padding-right: 6px;
-  border-radius: 50%;
-  color: white;
-  background: red;
-}
-
-@keyframes blink {
-  to {
-    color: #ffffff;
-  }
+	padding: 0 10px;
 }
