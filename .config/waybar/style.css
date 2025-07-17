@@ -71,6 +71,14 @@ window#waybar {
 	color: #859900;
 }
 
+#battery.warning {
+	color: #e0af68;
+}
+
+#battery.critical {
+	color: #f7768e;
+}
+
 #disk {
 	color: #e0af68;
 }

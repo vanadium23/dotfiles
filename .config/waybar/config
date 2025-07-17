@@ -108,6 +108,9 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
+    "format-alt": "{icon} {time}",
+    "format-plugged": " {capacity}%",
+    "format-charging": " {capacity}%",
     "format-icons": [
       " ",
       " ",
@@ -118,7 +121,7 @@
   },
   "disk": {
     "interval": 5,
-    "format": "Disk {percentage_used:2}%",
+    "format": "Disk {percentage_free:2}%",
     "path": "/"
   },
   "tray": {
